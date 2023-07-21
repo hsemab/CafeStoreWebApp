@@ -1,12 +1,17 @@
 package com.patika.cafestorewebapp.Controller;
 
-import com.patika.cafestorewebapp.Core.Result;
+import com.patika.cafestorewebapp.Core.Results.DataResult;
+import com.patika.cafestorewebapp.Core.Results.Result;
 import com.patika.cafestorewebapp.Dtos.RequestDto.Product.ProductAddDto;
 import com.patika.cafestorewebapp.Dtos.RequestDto.Product.ProductUpdateDto;
 import com.patika.cafestorewebapp.Dtos.RequestDto.Product.ProductUpdatePriceDto;
 import com.patika.cafestorewebapp.Dtos.ResponseDto.ProductResponseDto;
 import com.patika.cafestorewebapp.Service.Contrats.ProductService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,41 +24,41 @@ public class ProductController {
 
     // Create
     @PostMapping("/add")
-    public Result addProduct(@RequestBody ProductAddDto productAddDto) {
+    public ResponseEntity<Result> addProduct(@Valid @RequestBody ProductAddDto productAddDto) {
 
-        return this.productService.add(productAddDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(this.productService.add(productAddDto));
     }
 
     // Read
     @GetMapping("/getAll")
-    public List<ProductResponseDto> getAllProducts() {
+    public ResponseEntity<DataResult<List<ProductResponseDto>>> getAllProducts() {
 
-        return this.productService.getAll();
+        return ResponseEntity.status(HttpStatus.OK).body(this.productService.getAll());
     }
 
     @GetMapping("/getById")
-    public ProductResponseDto getById(@RequestParam int id) {
+    public ResponseEntity<DataResult<ProductResponseDto>> getById(@RequestParam int id) {
 
-        return this.productService.getById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(this.productService.getById(id));
     }
 
     // Update
     @PostMapping("/update")
-    public Result updateProduct(@RequestBody ProductUpdateDto productUpdateDto) {
+    public ResponseEntity<Result> updateProduct(@Valid @RequestBody ProductUpdateDto productUpdateDto) {
 
-        return this.productService.update(productUpdateDto);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(this.productService.update(productUpdateDto));
     }
 
     @PostMapping("/updatePrice")
-    public Result updateProductPrice(@RequestBody ProductUpdatePriceDto productUpdatePriceDto) {
+    public ResponseEntity<Result> updateProductPrice(@RequestBody ProductUpdatePriceDto productUpdatePriceDto) {
 
-        return this.productService.updatePrice(productUpdatePriceDto);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(this.productService.updatePrice(productUpdatePriceDto));
     }
 
     //Delete
-    @PostMapping("/deleteById")
-    public Result deleteProductById(@RequestParam int id) {
-        return this.productService.delete(id);
+    @PostMapping("/delete")
+    public ResponseEntity<Result> deleteProductById(@RequestParam int id) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.productService.delete(id));
 
     }
 

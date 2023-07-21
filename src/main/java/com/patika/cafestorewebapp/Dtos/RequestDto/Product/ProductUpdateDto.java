@@ -1,5 +1,6 @@
 package com.patika.cafestorewebapp.Dtos.RequestDto.Product;
 
+import com.patika.cafestorewebapp.AOP.Annotations.ProductNameMustBeUnique;
 import com.patika.cafestorewebapp.Entity.Category;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -11,6 +12,7 @@ public class ProductUpdateDto {
 
     private Integer productId;
 
+    @ProductNameMustBeUnique
     private String productName;
 
     private Integer categoryId;
