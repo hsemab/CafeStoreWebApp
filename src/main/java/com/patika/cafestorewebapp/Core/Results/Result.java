@@ -1,6 +1,6 @@
-package com.patika.cafestorewebapp.Core;
+package com.patika.cafestorewebapp.Core.Results;
 
-public class Result {
+public abstract class Result {
 
     private boolean success;
     private String message;

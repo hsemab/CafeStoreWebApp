@@ -1,4 +1,4 @@
-package com.patika.cafestorewebapp.Core;
+package com.patika.cafestorewebapp.Core.Results;
 
 public class ErrorResult extends Result {
     public ErrorResult() {
