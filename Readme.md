@@ -14,7 +14,6 @@ This repository contains the code for the Cafe Store Web App, a web application 
 - [Endpoints](#endpoints)
 - [Custom Exception Handler](#custom-exception-handler)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
@@ -115,7 +114,3 @@ The Cafe Store Web App includes a custom exception handler to gracefully handle 
 ## Contributing
 
 Contributions to the Cafe Store Web App are always welcome! If you find a bug or have a feature suggestion, please open an issue in this repository. If you'd like to contribute code, please create a pull request with a detailed description of the changes you made.
-
-## License
-
-The Cafe Store Web App is open-source software licensed under the [MIT License](LICENSE). Feel free to use and modify the code as per the terms of the license.
